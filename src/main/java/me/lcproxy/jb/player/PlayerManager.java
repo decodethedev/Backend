@@ -1,8 +1,10 @@
 package me.lcproxy.jb.player;
 
 import lombok.Getter;
+import org.checkerframework.checker.units.qual.A;
 import org.java_websocket.WebSocket;
 
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
@@ -40,5 +42,9 @@ public class PlayerManager {
         if (playerMap.containsKey(id))
             return playerMap.get(id);
         return null;
+    }
+
+    public int getTotalOnline() {
+        return playerMap.size();
     }
 }

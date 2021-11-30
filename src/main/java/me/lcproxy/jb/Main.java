@@ -8,8 +8,11 @@ import org.java_websocket.server.WebSocketServer;
 public class Main {
     public static void main(String[] args) {
         ShutdownHook shutDownTask = new ShutdownHook();
-
         Runtime.getRuntime().addShutdownHook(shutDownTask);
+
+        Discord discord = new Discord();
+
+        new Thread(() -> discord.initialize()).start();
 
         //new UpdateTagThread().start();
         GenFromIndexFile.load();

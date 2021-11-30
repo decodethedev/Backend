@@ -2,6 +2,7 @@ package me.lcproxy.jb;
 
 import io.netty.buffer.Unpooled;
 import lombok.Getter;
+import lombok.SneakyThrows;
 import me.lcproxy.jb.mongo.MongoManager;
 import me.lcproxy.jb.player.Player;
 import me.lcproxy.jb.player.PlayerManager;
@@ -59,8 +60,10 @@ public class WebServer extends WebSocketServer {
 
             System.out.println("Sent packets to " + player.getUsername());
 
+            WebServer.getInstance().getServerHandler().sendPacket(webSocket, new WSPacketCosmeticGive());
+
             for (Player online : PlayerManager.getPlayerMap().values()) {
-                WebServer.getInstance().getServerHandler().sendPacket(online.getConn(), new WSPacketCosmeticGive(player.getPlayerId(), player.getRankorDefault().getColor()));
+                this.serverHandler.sendPacket(online.getConn(), new WSPacketCosmeticGive(player.getPlayerId(), player.getRankorDefault().getColor()));
             }
         } catch (Exception e) {
             System.out.println("Error on open socket. Username: " + clientHandshake.getFieldValue("username"));

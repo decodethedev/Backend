@@ -18,22 +18,34 @@ public class WSPacketCosmeticGive extends WSPacket {
     int cosmeticId;
     int color = -1;
     boolean update;
+    boolean external;
+    ArrayList<Integer> externalCosmetics;
     public WSPacketCosmeticGive() {
         this.cosmeticId = -1;
         this.update = false;
+        this.external = false;
     }
     public WSPacketCosmeticGive(UUID uuid) {
         this.target = uuid;
         this.update = false;
+        this.external = false;
     }
     public WSPacketCosmeticGive(UUID uuid, boolean update) {
         this.target = uuid;
         this.update = update;
+        this.external = false;
+    }
+    public WSPacketCosmeticGive(UUID uuid, boolean update, boolean external, ArrayList<Integer> externalCosmetics) {
+        this.target = uuid;
+        this.update = update;
+        this.external = external;
+        this.externalCosmetics = externalCosmetics;
     }
     public WSPacketCosmeticGive(UUID uuid, int Color) {
         this.target = uuid;
         this.update = true;
         this.color = Color;
+        this.external = false;
     }
 
     @Override
@@ -59,7 +71,11 @@ public class WSPacketCosmeticGive extends WSPacket {
                     //System.out.println("Dupe id: " + id + " Name: " + name);
                 }
                 out.writeVarInt(id);
-                out.writeBoolean(player.getEnabledCosmetics().contains(id));
+                if(external) {
+                    out.writeBoolean(externalCosmetics.contains(id));
+                } else {
+                    out.writeBoolean(player.getEnabledCosmetics().contains(id));
+                }
                 i++;
             }
             //System.out.println("Added cosmetics to user " + player.getUsername());
@@ -70,8 +86,8 @@ public class WSPacketCosmeticGive extends WSPacket {
 
         else {
             if(color == -1) {
-                out.writeVarInt(player.getEnabledCosmetics().size());
-                for (int cosmId : player.getEnabledCosmetics()) {
+                out.writeVarInt(external ? externalCosmetics.size() : player.getEnabledCosmetics().size());
+                for (int cosmId : external ? externalCosmetics : player.getEnabledCosmetics()) {
                     String[] info = GenFromIndexFile.getCosmetics().get(cosmId);
                     int id = Integer.parseInt(info[0]);
                     String name = info[3];
@@ -81,8 +97,8 @@ public class WSPacketCosmeticGive extends WSPacket {
                 out.writeInt(WebServer.getInstance().getPlayerManager().getPlayerById(target).getRank().getColor());
                 out.writeBoolean(true);
             } else {
-                out.writeVarInt(player.getEnabledCosmetics().size());
-                for (int cosmId : player.getEnabledCosmetics()) {
+                out.writeVarInt(external ? externalCosmetics.size() : player.getEnabledCosmetics().size());
+                for (int cosmId : external ? externalCosmetics : player.getEnabledCosmetics()) {
                     String[] info = GenFromIndexFile.getCosmetics().get(cosmId);
                     int id = Integer.parseInt(info[0]);
                     String name = info[3];

@@ -9,6 +9,7 @@ import me.lcproxy.jb.server.WSPacket;
 import org.java_websocket.WebSocket;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.UUID;
 
 public class WSPacketCosmeticSet extends WSPacket {
@@ -51,5 +52,7 @@ public class WSPacketCosmeticSet extends WSPacket {
                 //System.out.println("Sending cosmetics to player " + online.getUsername());
             }
         }
+
+        WebServer.getInstance().getWebClient().send("cosmetics_update>v<" + WebServer.getInstance().getServerId() + ">v<" + player.getPlayerId().toString() + ">v<" + String.join(">C<", Arrays.toString(player.getEnabledCosmetics().toArray())));
     }
 }

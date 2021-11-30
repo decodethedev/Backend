@@ -1,7 +1,6 @@
 package me.lcproxy.jb;
 
 import me.lcproxy.jb.util.GenFromIndexFile;
-import me.lcproxy.jb.util.UpdateTagThread;
 import me.lcproxy.jb.util.ShutdownHook;
 import org.java_websocket.server.WebSocketServer;
 
@@ -10,11 +9,10 @@ public class Main {
         ShutdownHook shutDownTask = new ShutdownHook();
         Runtime.getRuntime().addShutdownHook(shutDownTask);
 
-        Discord discord = new Discord();
-
+        /*Discord discord = new Discord();
         new Thread(() -> discord.initialize()).start();
+        new UpdateTagThread().start();*/
 
-        //new UpdateTagThread().start();
         GenFromIndexFile.load();
 
         WebSocketServer server = new WebServer();

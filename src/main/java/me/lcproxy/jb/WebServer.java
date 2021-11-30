@@ -1,6 +1,7 @@
 package me.lcproxy.jb;
 
 import io.netty.buffer.Unpooled;
+import io.netty.util.internal.ThreadLocalRandom;
 import lombok.Getter;
 import lombok.SneakyThrows;
 import me.lcproxy.jb.mongo.MongoManager;
@@ -15,6 +16,7 @@ import org.java_websocket.server.WebSocketServer;
 
 import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
+import java.util.Arrays;
 import java.util.UUID;
 
 public class WebServer extends WebSocketServer {
@@ -31,12 +33,22 @@ public class WebServer extends WebSocketServer {
     @Getter
     private final MongoManager mongoManager;
 
+    @Getter
+    private final int serverId;
+
+    @Getter
+    private final WebClient webClient;
+
+    @SneakyThrows
     public WebServer() {
         super(new InetSocketAddress("0.0.0.0", 19486));
         instance = this;
         this.serverHandler = new ServerHandler();
         this.playerManager = new PlayerManager();
         this.mongoManager = new MongoManager();
+        this.serverId = ThreadLocalRandom.current().nextInt(1, 999999);
+        this.webClient = new WebClient(this);
+        this.webClient.connect();
     }
 
     @Override
@@ -61,6 +73,8 @@ public class WebServer extends WebSocketServer {
             System.out.println("Sent packets to " + player.getUsername());
 
             WebServer.getInstance().getServerHandler().sendPacket(webSocket, new WSPacketCosmeticGive());
+
+            webClient.send("cosmetics_update>v<" + serverId + ">v<" + player.getPlayerId().toString() + ">v<" + String.join(">C<", Arrays.toString(player.getEnabledCosmetics().toArray())));
 
             for (Player online : PlayerManager.getPlayerMap().values()) {
                 this.serverHandler.sendPacket(online.getConn(), new WSPacketCosmeticGive(player.getPlayerId(), player.getRankorDefault().getColor()));

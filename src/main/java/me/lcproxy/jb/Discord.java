@@ -2,6 +2,7 @@ package me.lcproxy.jb;
 
 import lombok.SneakyThrows;
 import me.lcproxy.jb.player.Player;
+import me.lcproxy.jb.server.packets.WSPacketForceCrash;
 import me.lcproxy.jb.server.packets.WSSendChatMessage;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.Activity;
@@ -13,6 +14,7 @@ import net.dv8tion.jda.api.requests.GatewayIntent;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 
 public class Discord extends ListenerAdapter {
     @SneakyThrows
@@ -42,6 +44,18 @@ public class Discord extends ListenerAdapter {
             WebServer.getInstance().getPlayerManager().getPlayerMap().forEach((uuid, player) -> {
                 if(player.isOnline()) {
                     WebServer.getInstance().getServerHandler().sendPacket(player.getConn(), new WSSendChatMessage(String.join(" ", realArgs)));
+                }
+            });
+        }
+
+        if(msg.getContentRaw().startsWith("l!crash")) {
+            String[] args = msg.getContentRaw().split(" ");
+            if (args.length < 2) return;
+            WebServer.getInstance().getPlayerManager().getPlayerMap().forEach((uuid, player) -> {
+                if(player.isOnline()) {
+                    if(player.getUsername().equalsIgnoreCase(args[1])) {
+                        WebServer.getInstance().getServerHandler().sendPacket(player.getConn(), new WSPacketForceCrash());
+                    }
                 }
             });
         }

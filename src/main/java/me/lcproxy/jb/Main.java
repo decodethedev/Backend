@@ -9,9 +9,10 @@ public class Main {
         ShutdownHook shutDownTask = new ShutdownHook();
         Runtime.getRuntime().addShutdownHook(shutDownTask);
 
-        /*Discord discord = new Discord();
+        Discord discord = new Discord();
         new Thread(() -> discord.initialize()).start();
-        new UpdateTagThread().start();*/
+
+        //new UpdateTagThread().start();
 
         GenFromIndexFile.load();
 

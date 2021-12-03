@@ -8,9 +8,9 @@ D:\Documents\lcProxyJB\src\main\java\me\lcproxy\jb\util\UpdateTagThread.java
 D:\Documents\lcProxyJB\src\main\java\me\lcproxy\jb\server\packets\WSPacketCosmeticGive.java
 D:\Documents\lcProxyJB\src\main\java\me\lcproxy\jb\server\packets\WSPacketCosmeticSet.java
 D:\Documents\lcProxyJB\src\main\java\me\lcproxy\jb\object\LunarLogoColors.java
-D:\Documents\lcProxyJB\src\main\java\me\lcproxy\jb\WebClient.java
 D:\Documents\lcProxyJB\src\main\java\me\lcproxy\jb\server\packets\WSPacketBanPlayer.java
 D:\Documents\lcProxyJB\src\main\java\me\lcproxy\jb\server\WSPacket.java
+D:\Documents\lcProxyJB\src\main\java\me\lcproxy\jb\server\packets\WSPacketForceCrash.java
 D:\Documents\lcProxyJB\src\main\java\me\lcproxy\jb\util\GenFromIndexFile.java
 D:\Documents\lcProxyJB\src\main\java\me\lcproxy\jb\server\ByteBufWrapper.java
 D:\Documents\lcProxyJB\src\main\java\me\lcproxy\jb\Main.java

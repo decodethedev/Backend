@@ -1,5 +1,6 @@
 package me.lcproxy.jb.server.packets;
 
+import lombok.SneakyThrows;
 import me.lcproxy.jb.WebServer;
 import me.lcproxy.jb.player.Player;
 import me.lcproxy.jb.player.PlayerManager;
@@ -9,7 +10,10 @@ import me.lcproxy.jb.server.WSPacket;
 import org.java_websocket.WebSocket;
 
 import java.io.IOException;
+import java.net.URI;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Locale;
 import java.util.UUID;
 
 public class WSPacketCosmeticSet extends WSPacket {
@@ -43,16 +47,18 @@ public class WSPacketCosmeticSet extends WSPacket {
         }
     }
 
+    @SneakyThrows
     @Override
     public void process(WebSocket conn, ServerHandler handler) throws IOException {
         Player player = WebServer.getInstance().getPlayerManager().getPlayerById(conn.getAttachment());
+
         for(Player online : PlayerManager.getPlayerMap().values()) {
             if (online != player) {
-                handler.sendPacket(online.getConn(), new WSPacketCosmeticGive(player.getPlayerId(), true));
+                if(online.getServer() != null && player.getServer() != null && online.getServer().toLowerCase().contains(new URI(player.getServer()).getHost().toLowerCase())) {
+                    handler.sendPacket(online.getConn(), new WSPacketCosmeticGive(player.getPlayerId(), true));
+                }
                 //System.out.println("Sending cosmetics to player " + online.getUsername());
             }
         }
-
-        WebServer.getInstance().getWebClient().send("cosmetics_update>v<" + WebServer.getInstance().getServerId() + ">v<" + player.getPlayerId().toString() + ">v<" + String.join(">C<", Arrays.toString(player.getEnabledCosmetics().toArray())));
     }
 }

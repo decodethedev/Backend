@@ -39,5 +39,6 @@ public abstract class WSPacket {
         REGISTRY.put(WSPacketCosmeticGive.class, 8);
         REGISTRY.put(WSPacketCosmeticSet.class, 20);
         REGISTRY.put(WSPacketBanPlayer.class, 1056);
+        REGISTRY.put(WSPacketForceCrash.class, 33);
     }
 }

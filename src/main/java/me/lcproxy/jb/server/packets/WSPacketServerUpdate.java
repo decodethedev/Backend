@@ -44,15 +44,21 @@ public class WSPacketServerUpdate extends WSPacket {
         if (!this.serverAddress.equalsIgnoreCase("")) {
             player.setServer(this.serverAddress);
 
-            WebServer.getInstance().getPlayerManager().getPlayerMap().forEach((uuid, player1) -> {
-                try {
-                    if(player1.getServer() != null && player1.getServer().toLowerCase().contains(new URI(player.getServer()).getHost().toLowerCase())) {
-                        handler.sendPacket(conn, new WSPacketCosmeticGive(player.getPlayerId(), true));
+            for(Player online : PlayerManager.getPlayerMap().values()) {
+                if (online != player) {
+                    try {
+                        if (online != null && online.isOnline() && online.getServer() != null && player.getServer() != null) {
+                            if (online.getServer().toLowerCase().contains(player.getServer().toLowerCase())) {
+                                handler.sendPacket(online.getConn(), new WSPacketCosmeticGive(player.getPlayerId(), true));
+                            }
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
                     }
-                } catch (URISyntaxException e) {
-                    // fold
+
+                    //System.out.println("Sending cosmetics to player " + online.getUsername());
                 }
-            });
+            }
 
             handler.sendPacket(conn, new WSSendChatMessage("§bThanks for using LCProxy!\n§bYour cosmetics have been §aactivated§b."));
         } else {

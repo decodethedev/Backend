@@ -86,7 +86,6 @@ public class Player {
     private DBObject toJson() {
         return new BasicDBObjectBuilder().add("_id", this.playerId.toString())
                 .add("username", this.username)
-                .add("rank", this.rank.id)
                 .add("cosmetics", this.enabledCosmetics)
                 .get();
     }

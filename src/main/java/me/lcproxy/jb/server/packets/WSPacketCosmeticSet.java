@@ -1,5 +1,6 @@
 package me.lcproxy.jb.server.packets;
 
+import com.google.common.net.InternetDomainName;
 import lombok.SneakyThrows;
 import me.lcproxy.jb.WebServer;
 import me.lcproxy.jb.player.Player;
@@ -54,9 +55,16 @@ public class WSPacketCosmeticSet extends WSPacket {
 
         for(Player online : PlayerManager.getPlayerMap().values()) {
             if (online != player) {
-                if(online.getServer() != null && player.getServer() != null && online.getServer().toLowerCase().contains(new URI(player.getServer()).getHost().toLowerCase())) {
-                    handler.sendPacket(online.getConn(), new WSPacketCosmeticGive(player.getPlayerId(), true));
+                try {
+                    if (online != null && online.isOnline() && online.getServer() != null && player.getServer() != null) {
+                        if (online.getServer().toLowerCase().contains(player.getServer().toLowerCase())) {
+                            handler.sendPacket(online.getConn(), new WSPacketCosmeticGive(player.getPlayerId(), true));
+                        }
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
+
                 //System.out.println("Sending cosmetics to player " + online.getUsername());
             }
         }

@@ -7,6 +7,7 @@ import lombok.SneakyThrows;
 import me.lcproxy.jb.mongo.MongoManager;
 import me.lcproxy.jb.player.Player;
 import me.lcproxy.jb.player.PlayerManager;
+import me.lcproxy.jb.player.Rank;
 import me.lcproxy.jb.server.ByteBufWrapper;
 import me.lcproxy.jb.server.ServerHandler;
 import me.lcproxy.jb.server.packets.*;
@@ -75,7 +76,7 @@ public class WebServer extends WebSocketServer {
                 System.out.println("Sent packets to " + player.getUsername());
 
                 for (Player online : PlayerManager.getPlayerMap().values()) {
-                    serverHandler.sendPacket(online.getConn(), new WSPacketCosmeticGive(player.getPlayerId(), player.getRankorDefault().getColor()));
+                    serverHandler.sendPacket(online.getConn(), new WSPacketCosmeticGive(player.getPlayerId(), player.getRankOrDefault() == Rank.CUSTOM ? player.getCustomColor() : player.getRankOrDefault().getColor()));
                 }
 
                 WebServer.getInstance().getServerHandler().sendPacket(webSocket, new WSPacketCosmeticGive());

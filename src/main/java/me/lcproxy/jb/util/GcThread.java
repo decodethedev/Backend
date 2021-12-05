@@ -3,14 +3,14 @@ package me.lcproxy.jb.util;
 import lombok.SneakyThrows;
 import me.lcproxy.jb.WebServer;
 
-public class UpdateTagThread extends Thread {
+public class GcThread extends Thread {
 
     @SneakyThrows
     @Override
     public void run() {
         while(true) {
-            Thread.sleep(5000);
-            WebServer.getInstance().updateTags();
+            Thread.sleep(30000);
+            System.gc();
         }
     }
 }

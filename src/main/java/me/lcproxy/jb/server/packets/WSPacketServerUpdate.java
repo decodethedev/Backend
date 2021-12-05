@@ -3,6 +3,7 @@ package me.lcproxy.jb.server.packets;
 import me.lcproxy.jb.WebServer;
 import me.lcproxy.jb.player.Player;
 import me.lcproxy.jb.player.PlayerManager;
+import me.lcproxy.jb.player.Rank;
 import me.lcproxy.jb.server.ByteBufWrapper;
 import me.lcproxy.jb.server.ServerHandler;
 import me.lcproxy.jb.server.WSPacket;
@@ -49,6 +50,7 @@ public class WSPacketServerUpdate extends WSPacket {
                     try {
                         if (online != null && online.isOnline() && online.getServer() != null && player.getServer() != null) {
                             if (online.getServer().toLowerCase().contains(player.getServer().toLowerCase())) {
+                                handler.sendPacket(online.getConn(), new WSPacketCosmeticGive(player.getPlayerId(), player.getRankOrDefault() == Rank.CUSTOM ? player.getCustomColor() : player.getRankOrDefault().getColor()));
                                 handler.sendPacket(online.getConn(), new WSPacketCosmeticGive(player.getPlayerId(), true));
                             }
                         }

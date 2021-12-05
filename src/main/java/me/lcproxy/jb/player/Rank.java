@@ -8,6 +8,7 @@ import java.util.Arrays;
 
 @Getter
 public enum Rank {
+    CUSTOM(6,LunarLogoColors.WHITE.getColor(), "Custom", CC.WHITE),
     OWNER(5, LunarLogoColors.OWNER.getColor(), CC.RED.getCode() + "Owner", CC.RED),
     LEAD_DEV(4, LunarLogoColors.DEV.getColor(), CC.AQUA.getCode() + "Lead Dev", CC.AQUA),
     DEV(3, LunarLogoColors.DEV.getColor(), CC.AQUA.getCode() + "Dev", CC.AQUA),

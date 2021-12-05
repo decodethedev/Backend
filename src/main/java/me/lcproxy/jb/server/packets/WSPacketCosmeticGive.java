@@ -2,6 +2,7 @@ package me.lcproxy.jb.server.packets;
 
 import me.lcproxy.jb.WebServer;
 import me.lcproxy.jb.player.Player;
+import me.lcproxy.jb.player.Rank;
 import me.lcproxy.jb.server.ByteBufWrapper;
 import me.lcproxy.jb.server.ServerHandler;
 import me.lcproxy.jb.server.WSPacket;
@@ -63,7 +64,8 @@ public class WSPacketCosmeticGive extends WSPacket {
                 i++;
             }
             //System.out.println("Added cosmetics to user " + player.getUsername());
-            out.writeInt(WebServer.getInstance().getPlayerManager().getPlayerById(target).getRank().getColor());
+            Rank playerRank = WebServer.getInstance().getPlayerManager().getPlayerById(target).getRank();
+            out.writeInt(playerRank == Rank.CUSTOM ? player.getCustomColor() : playerRank.getColor());
             out.writeBoolean(true);
 
         }
@@ -78,7 +80,8 @@ public class WSPacketCosmeticGive extends WSPacket {
                     out.writeVarInt(id);
                     out.writeBoolean(true);
                 }
-                out.writeInt(WebServer.getInstance().getPlayerManager().getPlayerById(target).getRank().getColor());
+                Rank playerRank = WebServer.getInstance().getPlayerManager().getPlayerById(target).getRank();
+                out.writeInt(playerRank == Rank.CUSTOM ? player.getCustomColor() : playerRank.getColor());
                 out.writeBoolean(true);
             } else {
                 out.writeVarInt(player.getEnabledCosmetics().size());

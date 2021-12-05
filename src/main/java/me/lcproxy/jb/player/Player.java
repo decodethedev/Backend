@@ -28,6 +28,8 @@ public class Player {
 
     private ArrayList<Integer> enabledCosmetics = new ArrayList<>();
 
+    private int customColor = 16777215;
+
     private Rank rank = Rank.USER;
 
     @ConstructorProperties({ "playerId", "username" })
@@ -46,6 +48,8 @@ public class Player {
                 this.rank = Rank.getRankById((int) profile.get("rank"));
             if (profile.get("cosmetics") != null)
                 ((BasicDBList) profile.get("cosmetics")).forEach(string -> this.getEnabledCosmetics().add((Integer) string));
+            if (profile.get("color") != null)
+                this.customColor = (int) profile.get("color");
 
             //if (this.isOnline()) this.sendAllPackets();
         } catch (Exception e) {
@@ -54,7 +58,7 @@ public class Player {
         }
     }
 
-    public Rank getRankorDefault(){
+    public Rank getRankOrDefault(){
         if(rank == null) {
             return Rank.USER;
         } else {
@@ -69,7 +73,7 @@ public class Player {
             if(online != this)
                 handler.sendPacket(conn, new WSPacketCosmeticGive(online.getPlayerId()));
         }
-        getRankorDefault();
+        getRankOrDefault();
         handler.sendPacket(conn, new WSPacketCosmeticGive());
         //handler.sendPacket(conn, new WSPacketEmoteGive());
     }
@@ -86,7 +90,9 @@ public class Player {
     private DBObject toJson() {
         return new BasicDBObjectBuilder().add("_id", this.playerId.toString())
                 .add("username", this.username)
+                .add("rank", this.rank.id)
                 .add("cosmetics", this.enabledCosmetics)
+                .add("color", this.customColor)
                 .get();
     }
 

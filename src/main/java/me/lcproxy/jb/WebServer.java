@@ -83,7 +83,7 @@ public class WebServer extends WebSocketServer {
 
                 serverHandler.sendPacket(webSocket, new WSSendChatMessage("§bThanks for using LCProxy!\n§bYour cosmetics have been §aactivated§b."));
 
-                System.out.println("Sent packets to " + player.getUsername());
+//                System.out.println("Sent packets to " + player.getUsername());
 
                 for (Player online : PlayerManager.getPlayerMap().values()) {
                     serverHandler.sendPacket(online.getConn(), new WSPacketCosmeticGive(player.getPlayerId(), player.getRankOrDefault() == Rank.CUSTOM ? player.getCustomColor() : player.getRankOrDefault().getColor()));

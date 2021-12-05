@@ -19,6 +19,8 @@ import org.java_websocket.server.WebSocketServer;
 import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
 import java.util.UUID;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class WebServer extends WebSocketServer {
 
@@ -37,6 +39,8 @@ public class WebServer extends WebSocketServer {
     @Getter
     private final int serverId;
 
+    private final ExecutorService threadPool;
+
     @SneakyThrows
     public WebServer() {
         super(new InetSocketAddress("0.0.0.0", 19486));
@@ -45,11 +49,12 @@ public class WebServer extends WebSocketServer {
         this.playerManager = new PlayerManager();
         this.mongoManager = new MongoManager();
         this.serverId = ThreadLocalRandom.current().nextInt(1, 999999);
+        this.threadPool = Executors.newFixedThreadPool(128);
     }
 
     @Override
     public void onOpen(WebSocket webSocket, ClientHandshake clientHandshake) {
-        new Thread(() -> {
+        threadPool.execute(() -> {
             try {
                 System.out.println("Connection from " + clientHandshake.getFieldValue("username"));
 
@@ -89,7 +94,7 @@ public class WebServer extends WebSocketServer {
                 System.out.println("Error on open socket. Username: " + clientHandshake.getFieldValue("username"));
                 e.printStackTrace();
             }
-        }).start();
+        });
     }
 
     public void updateTags() {
@@ -102,7 +107,7 @@ public class WebServer extends WebSocketServer {
 
     @Override
     public void onClose(WebSocket webSocket, int i, String s, boolean b) {
-        new Thread(() -> {
+        threadPool.execute(() -> {
             if (webSocket.getAttachment() != null) {
                 Player player = PlayerManager.getPlayerMap().get(webSocket.getAttachment());
                 if (player != null) {
@@ -112,7 +117,7 @@ public class WebServer extends WebSocketServer {
                     System.out.println("Player is null.");
                 }
             }
-        }).start();
+        });
     }
 
     @Override

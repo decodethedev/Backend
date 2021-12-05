@@ -1,6 +1,5 @@
 package me.lcproxy.jb;
 
-import me.lcproxy.jb.util.GcThread;
 import me.lcproxy.jb.util.GenFromIndexFile;
 import me.lcproxy.jb.util.ShutdownHook;
 import org.java_websocket.server.WebSocketServer;
@@ -12,8 +11,6 @@ public class Main {
 
         Discord discord = new Discord();
         new Thread(() -> discord.initialize()).start();
-
-        new GcThread().start();
 
         GenFromIndexFile.load();
 

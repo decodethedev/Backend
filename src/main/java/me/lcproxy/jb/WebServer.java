@@ -20,7 +20,9 @@ import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
 import java.util.UUID;
 import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import java.util.concurrent.SynchronousQueue;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 public class WebServer extends WebSocketServer {
 
@@ -49,7 +51,9 @@ public class WebServer extends WebSocketServer {
         this.playerManager = new PlayerManager();
         this.mongoManager = new MongoManager();
         this.serverId = ThreadLocalRandom.current().nextInt(1, 999999);
-        this.threadPool = Executors.newFixedThreadPool(128);
+        this.threadPool = new ThreadPoolExecutor(128, 1024 * 4,
+                30L, TimeUnit.SECONDS,
+                new SynchronousQueue<>());
     }
 
     @Override

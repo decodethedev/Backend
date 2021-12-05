@@ -32,7 +32,7 @@ public class Player {
 
     private Rank rank = Rank.USER;
 
-    @ConstructorProperties({ "playerId", "username" })
+    @ConstructorProperties({"playerId", "username"})
     public Player(UUID playerId, String username) {
         this.playerId = playerId;
         this.username = username;
@@ -58,8 +58,8 @@ public class Player {
         }
     }
 
-    public Rank getRankOrDefault(){
-        if(rank == null) {
+    public Rank getRankOrDefault() {
+        if (rank == null) {
             return Rank.USER;
         } else {
             return rank;
@@ -69,8 +69,8 @@ public class Player {
     public void sendAllPackets() {
         ServerHandler handler = WebServer.getInstance().getServerHandler();
         handler.sendPacket(conn, new WSPacketCosmeticGive());
-        for(Player online : PlayerManager.getPlayerMap().values()) {
-            if(online != this)
+        for (Player online : PlayerManager.getPlayerMap().values()) {
+            if (online != this)
                 handler.sendPacket(conn, new WSPacketCosmeticGive(online.getPlayerId()));
         }
         getRankOrDefault();

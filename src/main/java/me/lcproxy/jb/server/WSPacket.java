@@ -2,7 +2,6 @@ package me.lcproxy.jb.server;
 
 import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
-
 import io.netty.buffer.ByteBuf;
 import me.lcproxy.jb.server.packets.*;
 import org.java_websocket.WebSocket;
@@ -11,8 +10,11 @@ import java.io.IOException;
 
 public abstract class WSPacket {
     public static BiMap<Class<? extends WSPacket>, Integer> REGISTRY;
+
     public abstract void write(WebSocket conn, ByteBufWrapper out) throws IOException;
+
     public abstract void read(WebSocket conn, ByteBufWrapper in) throws IOException;
+
     public abstract void process(WebSocket conn, ServerHandler handler) throws IOException;
 
     protected void writeBlob(ByteBuf buf, byte[] bytes) {

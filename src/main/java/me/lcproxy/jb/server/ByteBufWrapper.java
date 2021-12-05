@@ -7,7 +7,6 @@ import io.netty.util.ByteProcessor;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.io.UnsupportedEncodingException;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.channels.FileChannel;
@@ -23,8 +22,7 @@ public class ByteBufWrapper extends ByteBuf {
         this.buf = buf;
     }
 
-    public int readVarInt()
-    {
+    public int readVarInt() {
         int i = 0;
         int chunk = 0;
         byte b;

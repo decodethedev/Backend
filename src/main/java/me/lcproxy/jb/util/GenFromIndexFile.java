@@ -67,6 +67,7 @@ public class GenFromIndexFile {
         }
 
     }
+
     private static File getFileFromResource(String fileName) throws URISyntaxException {
 
         ClassLoader classLoader = Main.class.getClassLoader();

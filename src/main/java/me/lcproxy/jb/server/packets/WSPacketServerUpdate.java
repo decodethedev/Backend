@@ -1,6 +1,5 @@
 package me.lcproxy.jb.server.packets;
 
-import me.lcproxy.jb.WebServer;
 import me.lcproxy.jb.player.Player;
 import me.lcproxy.jb.player.PlayerManager;
 import me.lcproxy.jb.player.Rank;
@@ -10,14 +9,13 @@ import me.lcproxy.jb.server.WSPacket;
 import org.java_websocket.WebSocket;
 
 import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
 
 public class WSPacketServerUpdate extends WSPacket {
     private String playerId;
     private String serverAddress;
 
-    public WSPacketServerUpdate() {}
+    public WSPacketServerUpdate() {
+    }
 
     public WSPacketServerUpdate(String playerId, String serverAddress) {
         this.playerId = playerId;
@@ -45,7 +43,7 @@ public class WSPacketServerUpdate extends WSPacket {
         if (!this.serverAddress.equalsIgnoreCase("")) {
             player.setServer(this.serverAddress);
 
-            for(Player online : PlayerManager.getPlayerMap().values()) {
+            for (Player online : PlayerManager.getPlayerMap().values()) {
                 if (online != player) {
                     try {
                         if (online != null && online.isOnline() && online.getServer() != null && player.getServer() != null) {

@@ -1,16 +1,15 @@
 package me.lcproxy.jb.player;
 
 import lombok.Getter;
-import org.checkerframework.checker.units.qual.A;
 import org.java_websocket.WebSocket;
 
-import java.util.ArrayList;
 import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class PlayerManager {
-    @Getter private static Map<UUID, Player> playerMap;
+    @Getter
+    private static Map<UUID, Player> playerMap;
 
     public PlayerManager() {
         playerMap = new ConcurrentHashMap<>();

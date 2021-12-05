@@ -22,7 +22,7 @@ public class WSPacketBanPlayer extends WSPacket {
     public void write(WebSocket conn, ByteBufWrapper out) throws IOException {
         out.writeInt(2);
         out.writeString(user);
-        out.writeInt(3 );
+        out.writeInt(3);
         out.writeString(reason);
     }
 

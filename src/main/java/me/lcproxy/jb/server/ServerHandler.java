@@ -1,7 +1,6 @@
 package me.lcproxy.jb.server;
 
 import io.netty.buffer.Unpooled;
-import me.lcproxy.jb.WebServer;
 import org.java_websocket.WebSocket;
 
 import java.io.IOException;

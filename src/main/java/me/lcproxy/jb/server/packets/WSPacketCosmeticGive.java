@@ -19,18 +19,22 @@ public class WSPacketCosmeticGive extends WSPacket {
     int cosmeticId;
     int color = -1;
     boolean update;
+
     public WSPacketCosmeticGive() {
         this.cosmeticId = -1;
         this.update = false;
     }
+
     public WSPacketCosmeticGive(UUID uuid) {
         this.target = uuid;
         this.update = false;
     }
+
     public WSPacketCosmeticGive(UUID uuid, boolean update) {
         this.target = uuid;
         this.update = update;
     }
+
     public WSPacketCosmeticGive(UUID uuid, int Color) {
         this.target = uuid;
         this.update = true;
@@ -68,10 +72,8 @@ public class WSPacketCosmeticGive extends WSPacket {
             out.writeInt(playerRank == Rank.CUSTOM ? player.getCustomColor() : playerRank.getColor());
             out.writeBoolean(true);
 
-        }
-
-        else {
-            if(color == -1) {
+        } else {
+            if (color == -1) {
                 out.writeVarInt(player.getEnabledCosmetics().size());
                 for (int cosmId : player.getEnabledCosmetics()) {
                     String[] info = GenFromIndexFile.getCosmetics().get(cosmId);

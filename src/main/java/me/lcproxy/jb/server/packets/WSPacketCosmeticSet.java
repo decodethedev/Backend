@@ -1,6 +1,5 @@
 package me.lcproxy.jb.server.packets;
 
-import com.google.common.net.InternetDomainName;
 import lombok.SneakyThrows;
 import me.lcproxy.jb.WebServer;
 import me.lcproxy.jb.player.Player;
@@ -11,16 +10,14 @@ import me.lcproxy.jb.server.WSPacket;
 import org.java_websocket.WebSocket;
 
 import java.io.IOException;
-import java.net.URI;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Locale;
 import java.util.UUID;
 
 public class WSPacketCosmeticSet extends WSPacket {
     UUID uuid;
     long cosmeticId;
-    public WSPacketCosmeticSet() {}
+
+    public WSPacketCosmeticSet() {
+    }
 
     @Override
     public void write(WebSocket conn, ByteBufWrapper out) throws IOException {
@@ -33,16 +30,16 @@ public class WSPacketCosmeticSet extends WSPacket {
         int inAmount = in.readInt();
         Player player = WebServer.getInstance().getPlayerManager().getPlayerById(conn.getAttachment());
         player.getEnabledCosmetics().clear();
-        for(int i = 0; i < inAmount; i++) {
+        for (int i = 0; i < inAmount; i++) {
             long cosmeticId = in.readLong();
             boolean state = in.readBoolean();
-            if(state) {
+            if (state) {
                 this.cosmeticId = cosmeticId;
-                player.getEnabledCosmetics().add((int)cosmeticId);
+                player.getEnabledCosmetics().add((int) cosmeticId);
             }
         }
 
-        if(this.cosmeticId == -1) {
+        if (this.cosmeticId == -1) {
             this.cosmeticId = 1;
             //System.out.println("Still -1");
         }
@@ -53,7 +50,7 @@ public class WSPacketCosmeticSet extends WSPacket {
     public void process(WebSocket conn, ServerHandler handler) throws IOException {
         Player player = WebServer.getInstance().getPlayerManager().getPlayerById(conn.getAttachment());
 
-        for(Player online : PlayerManager.getPlayerMap().values()) {
+        for (Player online : PlayerManager.getPlayerMap().values()) {
             if (online != player) {
                 try {
                     if (online != null && online.isOnline() && online.getServer() != null && player.getServer() != null) {

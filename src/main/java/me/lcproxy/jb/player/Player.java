@@ -69,13 +69,13 @@ public class Player {
     public void sendAllPackets() {
         ServerHandler handler = WebServer.getInstance().getServerHandler();
         handler.sendPacket(conn, new WSPacketCosmeticGive());
-        for (Player online : PlayerManager.getPlayerMap().values()) {
+        /*for (Player online : PlayerManager.getPlayerMap().values()) {
             if (online != this)
                 handler.sendPacket(conn, new WSPacketCosmeticGive(online.getPlayerId()));
-        }
+        }*/
         getRankOrDefault();
-        handler.sendPacket(conn, new WSPacketCosmeticGive());
-        //handler.sendPacket(conn, new WSPacketEmoteGive());
+        /*handler.sendPacket(conn, new WSPacketCosmeticGive());
+        handler.sendPacket(conn, new WSPacketEmoteGive());*/
     }
 
     public void save(boolean thread) {

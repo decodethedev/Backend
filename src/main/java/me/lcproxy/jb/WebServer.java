@@ -11,6 +11,7 @@ import me.lcproxy.jb.player.Rank;
 import me.lcproxy.jb.server.ByteBufWrapper;
 import me.lcproxy.jb.server.ServerHandler;
 import me.lcproxy.jb.server.packets.WSPacketCosmeticGive;
+import me.lcproxy.jb.server.packets.WSPacketEmoteGive;
 import me.lcproxy.jb.server.packets.WSSendChatMessage;
 import org.java_websocket.WebSocket;
 import org.java_websocket.handshake.ClientHandshake;
@@ -86,14 +87,12 @@ public class WebServer extends WebSocketServer {
 //                System.out.println("Sent packets to " + player.getUsername());
 
                 for (Player online : PlayerManager.getPlayerMap().values()) {
-                    serverHandler.sendPacket(online.getConn(), new WSPacketCosmeticGive(player.getPlayerId(), player.getRankOrDefault() == Rank.CUSTOM ? player.getCustomColor() : player.getRankOrDefault().getColor()));
+                    if(online != player)
+                        serverHandler.sendPacket(online.getConn(), new WSPacketCosmeticGive(player.getPlayerId(), player.getRankOrDefault() == Rank.CUSTOM ? player.getCustomColor() : player.getRankOrDefault().getColor()));
                 }
 
                 WebServer.getInstance().getServerHandler().sendPacket(webSocket, new WSPacketCosmeticGive());
-                WebServer.getInstance().getServerHandler().sendPacket(webSocket, new WSPacketCosmeticGive());
-                WebServer.getInstance().getServerHandler().sendPacket(webSocket, new WSPacketCosmeticGive());
-                WebServer.getInstance().getServerHandler().sendPacket(webSocket, new WSPacketCosmeticGive());
-
+                WebServer.getInstance().getServerHandler().sendPacket(webSocket, new WSPacketEmoteGive());
             } catch (Exception e) {
                 System.out.println("Error on open socket. Username: " + clientHandshake.getFieldValue("username"));
                 e.printStackTrace();

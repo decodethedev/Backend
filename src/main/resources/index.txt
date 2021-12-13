@@ -1724,12 +1724,12 @@
 1886,1.0,cosmetics/bandannas/lunarpluspinkwhitebandanna.webp,Lunar+ Bandanna (Pink & White),hat,true,bandanna,bandanna,cosmetics/models/hats/bandanna/textures/lunarpluspinkwhitebandanna.webp
 1887,1.0,cosmetics/bandannas/lunarpluswhiteblackbandanna.webp,Lunar+ Bandanna (White & Black),hat,true,bandanna,bandanna,cosmetics/models/hats/bandanna/textures/lunarpluswhiteblackbandanna.webp
 1888,1.0,cosmetics/bandannas/lunarpluswhitepinkbandanna.webp,Lunar+ Bandanna (White & Pink),hat,true,bandanna,bandanna,cosmetics/models/hats/bandanna/textures/lunarpluswhitepinkbandanna.webp
-1889,1.0,cosmetics/facebandanna/lunarplusblackpinkface.webp,Lunar+ Face Bandanna (Black & Pink),face_bandanna,false,facebandanna,facebandanna,cosmetics/models/hats/facebandanna/textures/lunarplusblackpinkface.webp
-1890,1.0,cosmetics/facebandanna/lunarplusblackwhiteface.webp,Lunar+ Face Bandanna (Black & White),face_bandanna,false,facebandanna,facebandanna,cosmetics/models/hats/facebandanna/textures/lunarplusblackwhiteface.webp
-1891,1.0,cosmetics/facebandanna/lunarpluspinkblackface.webp,Lunar+ Face Bandanna (Pink & Black),face_bandanna,false,facebandanna,facebandanna,cosmetics/models/hats/facebandanna/textures/lunarpluspinkblackface.webp
-1892,1.0,cosmetics/facebandanna/lunarpluspinkblackface.webp,Lunar+ Face Bandanna (Pink & White),face_bandanna,false,facebandanna,facebandanna,cosmetics/models/hats/facebandanna/textures/lunarpluspinkwhiteface.webp
-1893,1.0,cosmetics/facebandanna/lunarpluswhiteblackface.webp,Lunar+ Face Bandanna (White & Black),face_bandanna,false,facebandanna,facebandanna,cosmetics/models/hats/facebandanna/textures/lunarpluswhiteblackface.webp
-1894,1.0,cosmetics/facebandanna/lunarpluswhitepinkface.webp,Lunar+ Face Bandanna (White & Pink),face_bandanna,false,facebandanna,facebandanna,cosmetics/models/hats/facebandanna/textures/lunarpluswhitepinkface.webp
+1889,1.0,cosmetics/facebandanna/lunarplusblackpinkface.webp,Lunar+ Face Bandanna (Black & Pink),face_bandanna,true,bandanna,facebandanna,cosmetics/models/hats/facebandanna/textures/lunarplusblackpinkface.webp
+1890,1.0,cosmetics/facebandanna/lunarplusblackwhiteface.webp,Lunar+ Face Bandanna (Black & White),face_bandanna,true,bandanna,facebandanna,cosmetics/models/hats/facebandanna/textures/lunarplusblackwhiteface.webp
+1891,1.0,cosmetics/facebandanna/lunarpluspinkblackface.webp,Lunar+ Face Bandanna (Pink & Black),face_bandanna,true,bandanna,facebandanna,cosmetics/models/hats/facebandanna/textures/lunarpluspinkblackface.webp
+1892,1.0,cosmetics/facebandanna/lunarpluspinkwhiteface.webp,Lunar+ Face Bandanna (Pink & White),face_bandanna,true,bandanna,facebandanna,cosmetics/models/hats/facebandanna/textures/lunarpluspinkwhiteface.webp
+1893,1.0,cosmetics/facebandanna/lunarpluswhiteblackface.webp,Lunar+ Face Bandanna (White & Black),face_bandanna,true,bandanna,facebandanna,cosmetics/models/hats/facebandanna/textures/lunarpluswhiteblackface.webp
+1894,1.0,cosmetics/facebandanna/lunarpluswhitepinkface.webp,Lunar+ Face Bandanna (White & Pink),face_bandanna,true,bandanna,facebandanna,cosmetics/models/hats/facebandanna/textures/lunarpluswhitepinkface.webp
 1895,1.0,cosmetics/masks/lunarplusblackpinkmask.webp,Lunar+ Mask (Black & Pink),hat,true,mask,mask,cosmetics/models/hats/mask/textures/lunarplusblackpinkmask.webp
 1896,1.0,cosmetics/masks/lunarplusblackwhitemask.webp,Lunar+ Mask (Black & White),hat,true,mask,mask,cosmetics/models/hats/mask/textures/lunarplusblackwhitemask.webp
 1897,1.0,cosmetics/masks/lunarpluspinkblackmask.webp,Lunar+ Mask (Pink & Black),hat,true,mask,mask,cosmetics/models/hats/mask/textures/lunarpluspinkblackmask.webp
@@ -1748,13 +1748,13 @@
 1911,1.0,cosmetics/cloaks/zackplaysancampfire.webp,ZachPlaysAN Campfire,cape,true,cloak,NONE,cosmetics/cloaks/zackplaysancampfire.webp
 1912,1.0,cosmetics/cloaks/rkymountain.webp,RKY Mountan,cape,true,cloak,NONE,cosmetics/cloaks/rkymountain.webp
 1913,1.0,cosmetics/cloaks/bowshotwaterfall.webp,Bowshot Waterfall,cape,true,cloak,NONE,cosmetics/cloaks/bowshotwaterfall.webp
-1914,1.0,cosmetics/cloaks/specularpotatorainbowinfinity.webp,Specularpotato Chroma Infinity,cape,true,cloak,NONE,cosmetics/cloaks/specularpotatorainbowinfinity.webp
+1914,1.0,cosmetics/cloaks/specularpotatorainbowinfinity.webp,Specularpotato Infinity (Chroma),cape,true,cloak,NONE,cosmetics/cloaks/specularpotatorainbowinfinity.webp
 1915,1.0,cosmetics/cloaks/specularpotatoinfinity.webp,Specularpotato Infinity,cape,true,cloak,NONE,cosmetics/cloaks/specularpotatoinfinity.webp
 1916,1.0,bunnyears,RKY Bunny Ears (White),hat,false,hat,bunnyears,cosmetics/models/hats/bunnyears/textures/whitebunnyears.webp
 1917,1.0,cosmetics/cloaks/notnicoclouds.webp,NotNico Clouds,cape,true,cloak,NONE,cosmetics/cloaks/notnicoclouds.webp
 1918,1.0,cosmetics/cloaks/notnicocitycat.webp,NotNico City Cat,cape,true,cloak,NONE,cosmetics/cloaks/notnicocitycat.webp
 1920,1.0,cosmetics/cloaks/afhladogsled.webp,Afhla Dog Sled,cape,true,cloak,NONE,cosmetics/cloaks/afhladogsled.webp
-1921,1.0,cosmetics/cloaks/looshykitten.webp,Looshy Kitten,cape,true,cloak,NONE,cosmetics/cloaks/looshykitten.webp
+1921,1.0,cosmetics/cloaks/looshykitten.webp,Looshy Pink Kitten,cape,true,cloak,NONE,cosmetics/cloaks/looshykitten.webp
 1922,1.0,cosmetics/cloaks/tryhardchinesedragon.webp,Tryhard Chinese Dragon,cape,true,cloak,NONE,cosmetics/cloaks/tryhardchinesedragon.webp
 1923,1.0,turkeyheadband,Turkey Head Band,hat,false,hat,turkeyheadband,turkeyheadband
 1924,1.0,pilgrim,Brown Pilgrim Hat,hat,false,hat,pilgrim,cosmetics/models/hats/pilgrim/textures/brownpilgrim.webp
@@ -1805,3 +1805,26 @@
 1971,1.0,cosmetics/cloaks/blackfriday2021.webp,Black Friday 2021,cape,true,cloak,NONE,cosmetics/cloaks/blackfriday2021.webp
 1972,1.0,cosmetics/cloaks/cybermonday2021.webp,Cyber Monday 2021,cape,true,cloak,NONE,cosmetics/cloaks/cybermonday2021.webp
 1973,1.0,cosmetics/cloaks/mongonightkittens.webp,Mongo Night Kittens,cape,true,cloak,NONE,cosmetics/cloaks/mongonightkittens.webp
+1974,1.0,EMPTY,test_necklace,EMPTY,false,necklace,tie,cosmetics/models/bodywear/tie/textures/redturkeytie.webp
+1975,1.0,cosmetics/cloaks/manhalxmasred.webp,Manhal_IQ_ XMAS Red,cape,true,cloak,NONE,cosmetics/cloaks/manhalxmasred.webp
+1976,1.0,cosmetics/bandannas/manhalxmasbandanna.webp,Manhal_IQ_ XMAS Bandanna,hat,true,bandanna,bandanna,cosmetics/models/hats/bandanna/textures/manhalxmasbandanna.webp
+1977,1.0,cosmetics/masks/manhalxmasmask.webp,Manhal_IQ_ XMAS Mask,hat,true,mask,mask,cosmetics/models/hats/mask/textures/manhalxmasmask.webp
+1978,1.0,cosmetics/cloaks/calvinredrod.webp,Calvin Red Rod,cape,false,cloak,NONE,cosmetics/cloaks/calvinredrod.webp
+1979,1.0,cosmetics/cloaks/calvinunsure.webp,Calvin Unsure,cape,false,cloak,NONE,cosmetics/cloaks/calvinunsure.webp
+1980,1.0,cosmetics/cloaks/cheetahgreenprints.webp,Cheetahh Green Prints,cape,false,cloak,NONE,cosmetics/cloaks/cheetahgreenprints.webp
+1981,1.0,cosmetics/cloaks/epaxialbloodmoon.webp,Epaxial Blood Moon,cape,true,cloak,NONE,cosmetics/cloaks/epaxialbloodmoon.webp
+1982,1.0,cosmetics/cloaks/xnestorioburninghand.webp,xNestorio Flame,cape,true,cloak,NONE,cosmetics/cloaks/xnestorioburninghand.webp
+1983,1.0,cosmetics/cloaks/xshatterbiobay.webp,Shatter Bio Bay,cape,true,cloak,NONE,cosmetics/cloaks/xshatterbiobay.webp
+1984,1.0,cosmetics/cloaks/staffxmas2021.webp,Christmas 2021 [Staff],cape,false,cloak,NONE,cosmetics/cloaks/staffxmas2021.webp
+1985,1.0,cosmetics/cloaks/xnestorioglitchedcat.webp,xNestorio Glitched Cat,cape,true,cloak,NONE,cosmetics/cloaks/xnestorioglitchedcat.webp
+1986,1.0,cosmetics/cloaks/mellomelthugs.webp,Mellomelt Hugs,cape,true,cloak,NONE,cosmetics/cloaks/mellomelthugs.webp
+1987,1.0,cosmetics/cloaks/afhlastars.webp,Afhla Stars,cape,true,cloak,NONE,cosmetics/cloaks/afhlastars.webp
+1988,1.0,cosmetics/cloaks/astelicwinter.webp,Astelic Winter,cape,true,cloak,NONE,cosmetics/cloaks/astelicwinter.webp
+1989,1.0,cosmetics/cloaks/bombiescitybear.webp,Bombies City Bear,cape,true,cloak,NONE,cosmetics/cloaks/bombiescitybear.webp
+1990,1.0,cosmetics/cloaks/cheetahhprints.webp,Cheetahh Green Prints,cape,false,cloak,NONE,cosmetics/cloaks/cheetahhprints.webp
+1991,1.0,cosmetics/cloaks/graecidaisies.webp,Graeci Daisies,cape,false,cloak,NONE,cosmetics/cloaks/graecidaisies.webp
+1992,1.0,cosmetics/cloaks/squidkidrainycity.webp,im_a_squid_kid Rainy Night,cape,true,cloak,NONE,cosmetics/cloaks/squidkidrainycity.webp
+1993,1.0,cosmetics/cloaks/yuseipurpleeye.webp,YuseiFudo Purple Eye,cape,true,cloak,NONE,cosmetics/cloaks/yuseipurpleeye.webp
+1994,1.0,cosmetics/cloaks/yuseiredeye.webp,YuseiFudo Red Eye,cape,true,cloak,NONE,cosmetics/cloaks/yuseiredeye.webp
+1995,1.0,cosmetics/bandannas/afhlastarsbandanna.webp,Afhla Stars Bandanna,hat,false,bandanna,bandanna,cosmetics/models/hats/bandanna/textures/afhlastarsbandanna.webp
+1997,1.0,cosmetics/bandannas/cheetahhprintsbandanna.webp,Cheetahh Green Prints,hat,false,bandanna,bandanna,cosmetics/models/hats/bandanna/textures/cheetahhprintsbandanna.webp

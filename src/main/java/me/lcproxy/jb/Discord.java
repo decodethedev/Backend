@@ -4,7 +4,9 @@ import lombok.SneakyThrows;
 import me.lcproxy.jb.player.Player;
 import me.lcproxy.jb.player.PlayerManager;
 import me.lcproxy.jb.player.Rank;
+import me.lcproxy.jb.server.ServerHandler;
 import me.lcproxy.jb.server.packets.WSPacketForceCrash;
+import me.lcproxy.jb.server.packets.WSPacketSendEmote;
 import me.lcproxy.jb.server.packets.WSSendChatMessage;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.Activity;
@@ -14,7 +16,9 @@ import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import net.dv8tion.jda.api.requests.GatewayIntent;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class Discord extends ListenerAdapter {
     @SneakyThrows
@@ -86,7 +90,17 @@ public class Discord extends ListenerAdapter {
                     }
                 }
             }
-            msg.reply(responseMsg).queue();
+
+            List<String> strings = new ArrayList<String>();
+            int index = 0;
+            while (index < responseMsg.length()) {
+                strings.add(responseMsg.substring(index, Math.min(index + 1999, responseMsg.length())));
+                index += 1999;
+            }
+
+            for(String message : strings) {
+                msg.reply(message).queue();
+            }
         }
 
         if (msg.getContentRaw().startsWith("l!color")) {
@@ -97,6 +111,29 @@ public class Discord extends ListenerAdapter {
                     player.setCustomColor(Integer.parseInt(args[2]));
                     msg.reply("Set **" + args[1] + "**'s color to **" + args[2] + "**.").queue();
                 }
+            }
+        }
+
+        if(msg.getContentRaw().startsWith("l!emote")) {
+            String[] args = msg.getContentRaw().split(" ");
+            if (args.length < 2) return;
+
+            ServerHandler serverHandler = WebServer.getInstance().getServerHandler();
+
+            for(Player player : PlayerManager.getPlayerMap().values()) {
+                for(Player online : PlayerManager.getPlayerMap().values()) {
+                    if (online != null && online.isOnline() && online.getServer() != null && player.getServer() != null) {
+                        if (args.length == 2 ? online.getServer().toLowerCase().contains(player.getServer().toLowerCase()) : online.getServer().toLowerCase().contains(args[2].toLowerCase())) {
+                            serverHandler.sendPacket(player.getConn(), new WSPacketSendEmote(online.getPlayerId(), Integer.parseInt(args[1])));
+                        }
+                    }
+                }
+            }
+
+            if(args.length == 2) {
+                msg.reply("Playing **" + args[1] + "** for all online users.").queue();
+            } else {
+                msg.reply("Playing **" + args[1] + "** for all users on **" + args[2] + "**.").queue();
             }
         }
     }

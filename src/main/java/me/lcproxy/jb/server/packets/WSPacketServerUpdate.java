@@ -38,6 +38,8 @@ public class WSPacketServerUpdate extends WSPacket {
     public void process(WebSocket conn, ServerHandler handler) throws IOException {
         Player player = PlayerManager.getPlayerMap().get(conn.getAttachment());
         handler.sendPacket(conn, new WSPacketCosmeticGive());
+        //handler.sendPacket(conn, new WSPacketEmoteGive());
+
         if (this.serverAddress.equalsIgnoreCase(player.getServer())) return;
 
         if (!this.serverAddress.equalsIgnoreCase("")) {
